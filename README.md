@@ -1,4 +1,4 @@
-# flutter_messenger
+# Flutter Messenger
 
 A messenger app built using flutter
 
