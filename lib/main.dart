@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
- 
-void main() => runApp(MyApp());
- 
-class MyApp extends StatelessWidget {
+import 'pages/ConversationPageList.dart';
+
+void main() => runApp(Messio());
+
+class Messio extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
-        ),
+      title: 'Flutter Messenger',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: ConversationPageList(),
     );
   }
 }
