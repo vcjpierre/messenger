@@ -3,9 +3,9 @@ import 'package:flutter_messenger/config/Palette.dart';
 import 'package:intl/intl.dart';
 
 class ChatItemWidget extends StatelessWidget{
-  var index;
+  final int index;
 
-  ChatItemWidget(this.index);
+ const ChatItemWidget(this.index);
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +84,6 @@ class ChatItemWidget extends StatelessWidget{
         ),
         margin: EdgeInsets.only(bottom: 10.0),
       );
-    }  
-  }
+    }  }
+  
 }

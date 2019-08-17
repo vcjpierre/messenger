@@ -3,7 +3,10 @@ import 'package:flutter_messenger/config/Palette.dart';
 
 class InputWidget extends StatelessWidget {
 
-  final TextEditingController textEditingController = new TextEditingController();
+  final TextEditingController textEditingController = TextEditingController();
+
+
+   InputWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +19,12 @@ class InputWidget extends StatelessWidget {
               child: new IconButton(
                 icon: new Icon(Icons.face),
                 color: Palette.primaryColor,
-                onPressed: () {},
+                onPressed: ()=>{},
               ),
             ),
             color: Colors.white,
           ),
+
           // Text input
           Flexible(
             child: Container(
@@ -34,6 +38,7 @@ class InputWidget extends StatelessWidget {
               ),
             ),
           ),
+
           // Send Message Button
           Material(
             child: new Container(

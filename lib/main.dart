@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'pages/ConversationPageList.dart';
 
-void main() => runApp(Messio());
+void main() => runApp(Messenger());
 
-class Messio extends StatelessWidget {
+class Messenger extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
