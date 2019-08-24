@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pages/ConversationPageList.dart';
+import 'config/Palette.dart';
+import 'pages/RegisterPage.dart';
 
 void main() => runApp(Messenger());
 
@@ -8,11 +9,12 @@ class Messenger extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Messenger',
+      title: 'Messenger',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Palette.primaryColor,
       ),
-      home: ConversationPageList(),
+      home: RegisterPage(),
     );
   }
 }
