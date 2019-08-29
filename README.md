@@ -2,6 +2,11 @@
 
 A messenger app built using flutter
 
+<p align="center">
+    <img src="docs/Screenshot_1567091065.png" height="600em"/>
+    <img src="docs/Screenshot_1567091147.png" height="600em"/>
+</p>
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
