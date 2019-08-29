@@ -143,7 +143,7 @@ class _RegisterPageState extends State<RegisterPage>
               child: Image.asset(Assets.app_icon_fg, height: 100)),
           Container(
               margin: EdgeInsets.only(top: 30),
-              child: Text('flutter_messenger Messenger',
+              child: Text('Messenger',
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
