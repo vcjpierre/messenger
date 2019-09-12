@@ -5,10 +5,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_messenger/config/Assets.dart';
+import 'package:flutter_messenger/config/Decorations.dart';
 import 'package:flutter_messenger/config/Palette.dart';
 import 'package:flutter_messenger/config/Styles.dart';
 import 'package:flutter_messenger/config/Transitions.dart';
-import 'package:flutter_messenger/pages/ConversationPageSlide.dart';
+import 'package:flutter_messenger/pages/ContactListPage.dart';
 import 'package:flutter_messenger/widgets/CircleIndicator.dart';
 import 'package:flutter_messenger/widgets/NumberPicker.dart';
 import 'package:flutter_messenger/blocs/authentication/Bloc.dart';
@@ -183,7 +184,7 @@ class _RegisterPageState extends State<RegisterPage>
           child: Image.asset(Assets.app_icon_fg, height: 100)),
       Container(
           margin: EdgeInsets.only(top: 30),
-          child: Text('FlutterMessenger',
+          child: Text('flutter_messenger Messenger',
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -311,17 +312,8 @@ class _RegisterPageState extends State<RegisterPage>
           style: Styles.subHeadingLight,
           focusNode: usernameFocusNode,
           controller: usernameController,
-          decoration: InputDecoration(
-            hintText: '@username',
-            hintStyle: Styles.hintTextLight,
-            contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Palette.primaryColor, width: 0.1),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Palette.primaryColor, width: 0.1),
-            ),
-          ),
+          decoration: Decorations.getInputDecoration(
+              hint: '@username', isPrimary: false),
         ));
   }
 
@@ -388,7 +380,7 @@ class _RegisterPageState extends State<RegisterPage>
   navigateToHome() {
     Navigator.push(
       context,
-      SlideLeftRoute(page: ConversationPageSlide()),
+      SlideLeftRoute(page: ContactListPage()),
     );
   }
 

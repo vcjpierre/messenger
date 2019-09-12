@@ -3,6 +3,7 @@ import 'package:flutter_messenger/providers/AuthenticationProvider.dart';
 import 'package:flutter_messenger/providers/BaseProviders.dart';
 
 class AuthenticationRepository {
+
   BaseAuthenticationProvider authenticationProvider = AuthenticationProvider();
 
   Future<FirebaseUser> signInWithGoogle() =>

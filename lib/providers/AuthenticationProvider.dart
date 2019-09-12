@@ -1,11 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
+import 'package:flutter_messenger/config/Constants.dart';
+import 'package:flutter_messenger/utils/SharedObjects.dart';
 import 'BaseProviders.dart';
 
 class AuthenticationProvider extends BaseAuthenticationProvider {
-  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  final GoogleSignIn googleSignIn = GoogleSignIn();
+
+   final FirebaseAuth firebaseAuth;
+   final GoogleSignIn googleSignIn;
+
+  AuthenticationProvider({FirebaseAuth firebaseAuth, GoogleSignIn googleSignIn}):
+        firebaseAuth= firebaseAuth ?? FirebaseAuth.instance, googleSignIn = googleSignIn ?? GoogleSignIn();
 
   @override
   Future<FirebaseUser> signInWithGoogle() async {
@@ -19,7 +24,9 @@ class AuthenticationProvider extends BaseAuthenticationProvider {
         accessToken: authentication.accessToken);
     await firebaseAuth.signInWithCredential(
         credential); //sign in to firebase using the generated credentials
-    return firebaseAuth.currentUser(); //return the firebase user created
+    FirebaseUser firebaseUser = await firebaseAuth.currentUser();
+    SharedObjects.prefs.setString(Constants.sessionUid, firebaseUser.uid);
+    return firebaseUser; //return the firebase user created
   }
 
   @override
