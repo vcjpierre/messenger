@@ -16,7 +16,7 @@ import 'package:flutter_messenger/blocs/authentication/Bloc.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
+  State<StatefulWidget> createState() {    
     return _RegisterPageState();
   }
 }
@@ -184,7 +184,7 @@ class _RegisterPageState extends State<RegisterPage>
           child: Image.asset(Assets.app_icon_fg, height: 100)),
       Container(
           margin: EdgeInsets.only(top: 30),
-          child: Text('flutter_messenger Messenger',
+          child: Text('Messenger',
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

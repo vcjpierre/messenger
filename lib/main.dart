@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_messenger/pages/ContactListPage.dart';
+import 'package:flutter_messenger/blocs/contacts/Bloc.dart';
 import 'package:flutter_messenger/pages/ConversationPageSlide.dart';
 import 'package:flutter_messenger/repositories/AuthenticationRepository.dart';
 import 'package:flutter_messenger/repositories/StorageRepository.dart';
@@ -19,18 +19,29 @@ void main() async {
   final StorageRepository storageRepository = StorageRepository();
   SharedObjects.prefs = await SharedPreferences.getInstance();
   runApp(
-    BlocProvider(
-      builder: (context) => AuthenticationBloc(
-          authenticationRepository: authRepository,
-          userDataRepository: userDataRepository,
-          storageRepository: storageRepository)
-        ..dispatch(AppLaunched()),
+    MultiBlocProvider(
+      providers:[
+        BlocProvider<AuthenticationBloc>(
+          builder: (context) => AuthenticationBloc(
+              authenticationRepository: authRepository,
+              userDataRepository: userDataRepository,
+              storageRepository: storageRepository)
+            ..dispatch(AppLaunched()),
+        ),
+        BlocProvider<ContactsBloc>(
+          builder: (context) => ContactsBloc(
+              userDataRepository: userDataRepository,
+             ),
+        )
+      ] ,
       child: Messenger(),
-    ),
+    )
+
   );
 }
 
 class Messenger extends StatelessWidget {
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +54,6 @@ class Messenger extends StatelessWidget {
       ),
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
-          return ContactListPage();
           if (state is UnAuthenticated) {
             return RegisterPage();
           } else if (state is ProfileUpdated) {

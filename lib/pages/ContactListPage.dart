@@ -8,8 +8,6 @@ import 'package:flutter_messenger/config/Decorations.dart';
 import 'package:flutter_messenger/config/Palette.dart';
 import 'package:flutter_messenger/config/Styles.dart';
 import 'package:flutter_messenger/models/Contact.dart';
-import 'package:flutter_messenger/repositories/UserDataRepository.dart';
-import 'package:flutter_messenger/utils/Exceptions.dart';
 import 'package:flutter_messenger/widgets/BottomSheetFixed.dart';
 import 'package:flutter_messenger/widgets/ContactRowWidget.dart';
 import 'package:flutter_messenger/widgets/GradientFab.dart';
@@ -25,19 +23,16 @@ class ContactListPage extends StatefulWidget {
 class _ContactListPageState extends State<ContactListPage>
     with TickerProviderStateMixin {
   ContactsBloc contactsBloc;
-  UserDataRepository userDataRepository;
   ScrollController scrollController;
   final TextEditingController usernameController = TextEditingController();
   List<Contact> contacts;
   AnimationController animationController;
-
   Animation<double> animation;
 
   @override
   void initState() {
     contacts = List();
-    userDataRepository = UserDataRepository();
-    contactsBloc = ContactsBloc(userDataRepository: userDataRepository);
+    contactsBloc = BlocProvider.of<ContactsBloc>(context);
     scrollController = ScrollController();
     scrollController.addListener(scrollListener);
     animationController = AnimationController(
@@ -63,6 +58,7 @@ class _ContactListPageState extends State<ContactListPage>
             child: BlocListener<ContactsBloc, ContactsState>(
               bloc: contactsBloc,
               listener: (bc, state) {
+                print(state);
                 if (state is AddContactSuccessState) {
                   Navigator.pop(context);
                   final snackBar = SnackBar(
@@ -100,6 +96,7 @@ class _ContactListPageState extends State<ContactListPage>
                         ),
                         BlocBuilder<ContactsBloc, ContactsState>(
                             builder: (context, state) {
+                              print(state);
                           if (state is FetchingContactsState) {
                             return SliverToBoxAdapter(
                               child: Container(
@@ -108,6 +105,7 @@ class _ContactListPageState extends State<ContactListPage>
                                       child: CircularProgressIndicator())),
                             );
                           }
+
                           if (state is FetchedContactsState)
                             contacts = state.contacts;
 
@@ -156,9 +154,9 @@ class _ContactListPageState extends State<ContactListPage>
     await showModalBottomSheetApp(
         context: context,
         builder: (BuildContext bc) {
-          return BlocProvider<ContactsBloc>(
-              builder: (context) => contactsBloc,
-              child: Container(
+          return BlocBuilder<ContactsBloc, ContactsState>(
+              builder: (context,state){
+             return Container(
                 color: Color(0xFF737373),
                 // This line set the transparent background
                 child: Container(
@@ -214,7 +212,8 @@ class _ContactListPageState extends State<ContactListPage>
                         ],
                       ),
                     )),
-              ));
+              );
+              });
         });
   }
 
