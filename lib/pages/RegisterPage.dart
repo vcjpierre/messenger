@@ -16,7 +16,7 @@ import 'package:flutter_messenger/blocs/authentication/Bloc.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {    
+  State<StatefulWidget> createState() {
     return _RegisterPageState();
   }
 }

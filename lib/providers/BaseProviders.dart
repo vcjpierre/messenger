@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_messenger/models/Chat.dart';
 import 'package:flutter_messenger/models/Contact.dart';
+import 'package:flutter_messenger/models/Message.dart';
 import 'package:flutter_messenger/models/User.dart';
 
 abstract class BaseAuthenticationProvider{
@@ -21,5 +23,11 @@ abstract class BaseUserDataProvider{
 }
 
 abstract class BaseStorageProvider{
-  Future<String> uploadImage(File file, String path);
+  Future<String> uploadFile(File file, String path);
+}
+
+abstract class BaseChatProvider{
+  Stream<List<Message>> getMessages(String chatId);
+  Stream<List<Chat>> getChats();
+  Future<void> sendMessage(String chatId, Message message);
 }

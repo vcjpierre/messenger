@@ -14,7 +14,7 @@ void main() {
     StorageReferenceMock fileReference = StorageReferenceMock();
     StorageUploadTaskMock storageUploadTask = StorageUploadTaskMock();
     StorageTaskSnapshotMock storageTaskSnapshot = StorageTaskSnapshotMock();
-    String resultUrl = "http://www.adityag.me/";
+    String resultUrl = "http://www.google.com";
     StorageProvider storageProvider =
         StorageProvider(firebaseStorage: firebaseStorage);
     test('Testing if uploadImage returns a url', () async {
@@ -26,7 +26,7 @@ void main() {
       when(fileReference.getDownloadURL())
           .thenAnswer((_) => Future<String>.value(resultUrl));
 
-      expect(await storageProvider.uploadImage(MockFile(), ''), resultUrl);
+      expect(await storageProvider.uploadFile(MockFile(), ''), resultUrl);
     });
   });
 }

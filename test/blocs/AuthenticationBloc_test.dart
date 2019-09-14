@@ -30,7 +30,7 @@ void main() {
     file = MockFile();
     age = 23;
     username = 'johndoe';
-    profilePictureUrl = 'http://www.github.com/adityadroid';
+    profilePictureUrl = 'http://www.github.com/vcjpierre';
     authenticationBloc = AuthenticationBloc(
         userDataRepository: userDataRepository,
         authenticationRepository: authenticationRepository,
@@ -148,7 +148,7 @@ void main() {
 
   group('SaveProfile', () {
     test('emits [ProfileUpdateInProgress -> ProfileUpdated] everytime SaveProfile is dispatched', () {
-      when(storageRepository.uploadImage(any, any))
+      when(storageRepository.uploadFile(any, any))
           .thenAnswer((_) => Future.value(profilePictureUrl));
       when(authenticationRepository.getCurrentUser())
           .thenAnswer((_) => Future.value(firebaseUser));

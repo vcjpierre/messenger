@@ -7,7 +7,9 @@ import 'package:flutter_messenger/config/Assets.dart';
 import 'package:flutter_messenger/config/Decorations.dart';
 import 'package:flutter_messenger/config/Palette.dart';
 import 'package:flutter_messenger/config/Styles.dart';
+import 'package:flutter_messenger/config/Transitions.dart';
 import 'package:flutter_messenger/models/Contact.dart';
+import 'package:flutter_messenger/pages/ConversationPageSlide.dart';
 import 'package:flutter_messenger/widgets/BottomSheetFixed.dart';
 import 'package:flutter_messenger/widgets/ContactRowWidget.dart';
 import 'package:flutter_messenger/widgets/GradientFab.dart';
@@ -76,6 +78,8 @@ class _ContactListPageState extends State<ContactListPage>
                       behavior: SnackBarBehavior.floating,
                       content: Text(state.exception.errorMessage()));
                   Scaffold.of(bc).showSnackBar(snackBar);
+                }else if (state is ClickedContactState){
+                  Navigator.push(context,SlideLeftRoute(page: ConversationPageSlide(startContact: state.contact)));
                 }
               },
               child: Stack(

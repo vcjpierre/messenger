@@ -4,10 +4,11 @@ import 'package:flutter_messenger/pages/ConversationPage.dart';
 import 'package:flutter_messenger/pages/ConversationPageSlide.dart';
 import 'package:flutter_messenger/widgets/InputWidget.dart';
 
+
 void main(){
   const MaterialApp app = MaterialApp(
     home: Scaffold(
-        body:  const ConversationPageSlide()
+        body: const ConversationPageSlide()
     ),
   );
   testWidgets('ConversationPageSlide UI Test', (WidgetTester tester) async {

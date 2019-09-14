@@ -1,6 +1,5 @@
-# Flutter Messenger
-
-A messenger app built using flutter
+<h1 align="center">Flutter Messenger 🤳</h1>
+<p align="center">A messenger app built using flutter</p>
 
 <p align="center">
     <img src="docs/Screenshot_1567091065.png" height="600em"/>

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_messenger/blocs/chats/Bloc.dart';
 import 'package:flutter_messenger/blocs/contacts/Bloc.dart';
 import 'package:flutter_messenger/pages/ConversationPageSlide.dart';
 import 'package:flutter_messenger/repositories/AuthenticationRepository.dart';
+import 'package:flutter_messenger/repositories/ChatRepository.dart';
 import 'package:flutter_messenger/repositories/StorageRepository.dart';
 import 'package:flutter_messenger/repositories/UserDataRepository.dart';
 import 'package:flutter_messenger/utils/SharedObjects.dart';
@@ -17,6 +19,7 @@ void main() async {
   final AuthenticationRepository authRepository = AuthenticationRepository();
   final UserDataRepository userDataRepository = UserDataRepository();
   final StorageRepository storageRepository = StorageRepository();
+  final ChatRepository chatRepository = ChatRepository();
   SharedObjects.prefs = await SharedPreferences.getInstance();
   runApp(
     MultiBlocProvider(
@@ -32,6 +35,13 @@ void main() async {
           builder: (context) => ContactsBloc(
               userDataRepository: userDataRepository,
              ),
+        ),
+        BlocProvider<ChatBloc>(
+          builder: (context) => ChatBloc(
+            userDataRepository: userDataRepository,
+            storageRepository:  storageRepository,
+            chatRepository:chatRepository
+          ),
         )
       ] ,
       child: Messenger(),

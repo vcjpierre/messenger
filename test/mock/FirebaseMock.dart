@@ -35,7 +35,7 @@ class FirebaseUserMock extends Mock implements FirebaseUser{
   @override
   String get email => 'johndoe@mail.com';
   @override
-  String get photoUrl => 'http://www.adityag.me';
+  String get photoUrl => 'http://www.google.com';
 }
 
 /*
@@ -71,9 +71,9 @@ class DocumentReferenceMock extends Mock implements DocumentReference{
   Stream<DocumentSnapshot> snapshots({bool includeMetadataChanges = false}) {
     if(documentSnapshotMock!=null)
     return Stream.fromFuture(Future<DocumentSnapshotMock>.value(documentSnapshotMock));
-    else
+    else {
       return Stream.empty();
-  }
+    }}
   @override
   Future<void> setData(Map<String,dynamic > data, {bool merge = false}) {
     if(this.documentSnapshotMock==null)
