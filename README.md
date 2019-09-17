@@ -1,7 +1,7 @@
 <h1 align="center">Flutter Messenger 🤳</h1>
 <p align="center">A messenger app built using flutter</p>
 
-<p align="center">
+<p float="left">
     <img src="docs/Screenshot_1567091065.png" height="600em"/>
     <img src="docs/Screenshot_1567091075.png" height="600em"/>
     <img src="docs/Screenshot_1568759618.png" height="600em"/>
