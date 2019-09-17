@@ -4,7 +4,7 @@
 <p align="center">
     <img src="docs/Screenshot_1567091065.png" height="500em"/>
     <img src="docs/Screenshot_1567091075.png" height="500em"/>
-    <img src="docs/Screenshot_1567091075.png" height="500em"/>
+    <img src="docs/Screenshot_1568759618.png" height="500em"/>
     <img src="docs/Screenshot_1568758613.png" height="500em"/>
 </p>
 
