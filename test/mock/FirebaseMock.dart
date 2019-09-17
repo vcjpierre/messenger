@@ -35,7 +35,7 @@ class FirebaseUserMock extends Mock implements FirebaseUser{
   @override
   String get email => 'johndoe@mail.com';
   @override
-  String get photoUrl => 'http://www.google.com';
+  String get photoUrl => 'http://www.adityag.me';
 }
 
 /*

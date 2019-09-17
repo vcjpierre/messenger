@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_messenger/blocs/chats/Bloc.dart';
 import 'package:flutter_messenger/blocs/contacts/Bloc.dart';
-import 'package:flutter_messenger/pages/ConversationPageSlide.dart';
+import 'package:flutter_messenger/pages/ContactListPage.dart';
 import 'package:flutter_messenger/repositories/AuthenticationRepository.dart';
 import 'package:flutter_messenger/repositories/ChatRepository.dart';
 import 'package:flutter_messenger/repositories/StorageRepository.dart';
 import 'package:flutter_messenger/repositories/UserDataRepository.dart';
 import 'package:flutter_messenger/utils/SharedObjects.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'blocs/authentication/Bloc.dart';
 import 'config/Palette.dart';
 import 'pages/RegisterPage.dart';
@@ -20,7 +18,7 @@ void main() async {
   final UserDataRepository userDataRepository = UserDataRepository();
   final StorageRepository storageRepository = StorageRepository();
   final ChatRepository chatRepository = ChatRepository();
-  SharedObjects.prefs = await SharedPreferences.getInstance();
+  SharedObjects.prefs  = await CachedSharedPreferences.getInstance();
   runApp(
     MultiBlocProvider(
       providers:[
@@ -34,6 +32,7 @@ void main() async {
         BlocProvider<ContactsBloc>(
           builder: (context) => ContactsBloc(
               userDataRepository: userDataRepository,
+            chatRepository: chatRepository
              ),
         ),
         BlocProvider<ChatBloc>(
@@ -41,7 +40,7 @@ void main() async {
             userDataRepository: userDataRepository,
             storageRepository:  storageRepository,
             chatRepository:chatRepository
-          ),
+          )..dispatch(FetchChatListEvent()),
         )
       ] ,
       child: Messenger(),
@@ -67,7 +66,8 @@ class Messenger extends StatelessWidget {
           if (state is UnAuthenticated) {
             return RegisterPage();
           } else if (state is ProfileUpdated) {
-            return ConversationPageSlide();
+            return ContactListPage();
+          //  return ConversationPageSlide();
           } else {
             return RegisterPage();
           }
