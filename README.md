@@ -1,10 +1,11 @@
 <h1 align="center">Flutter Messenger 🤳</h1>
 <p align="center">A messenger app built using flutter</p>
 
-<p float="left">
-    <img src="docs/Screenshot_1567091065.png" height="600em"/>
-    <img src="docs/Screenshot_1567091075.png" height="600em"/>
-    <img src="docs/Screenshot_1568758613.png" height="600em"/>
+<p align="center">
+    <img src="docs/Screenshot_1567091065.png" height="500em"/>
+    <img src="docs/Screenshot_1567091075.png" height="500em"/>
+    <img src="docs/Screenshot_1567091075.png" height="500em"/>
+    <img src="docs/Screenshot_1568758613.png" height="500em"/>
 </p>
 
 ## Getting Started
