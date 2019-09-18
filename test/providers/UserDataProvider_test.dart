@@ -58,7 +58,7 @@ void main() {
           await userDataProvider.saveDetailsFromGoogleAuth(FirebaseUserMock());
       expect(user.name, 'John Doe');
       expect(user.photoUrl,
-          'http://www.adityag.me'); //image from FirebaseUser object is written
+          'http://www.google.com'); //image from FirebaseUser object is written
     });
 
     test(
