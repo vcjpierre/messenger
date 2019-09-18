@@ -40,7 +40,7 @@ void main() async {
             userDataRepository: userDataRepository,
             storageRepository:  storageRepository,
             chatRepository:chatRepository
-          )..dispatch(FetchChatListEvent()),
+          ),
         )
       ] ,
       child: Messenger(),
@@ -66,6 +66,7 @@ class Messenger extends StatelessWidget {
           if (state is UnAuthenticated) {
             return RegisterPage();
           } else if (state is ProfileUpdated) {
+            BlocProvider.of<ChatBloc>(context).dispatch(FetchChatListEvent());
             return ContactListPage();
           //  return ConversationPageSlide();
           } else {
