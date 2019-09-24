@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_messenger/blocs/contacts/Bloc.dart';
 import 'package:flutter_messenger/config/Palette.dart';
+import 'package:flutter_messenger/config/Transitions.dart';
 import 'package:flutter_messenger/models/Contact.dart';
+import 'package:flutter_messenger/pages/ConversationPageSlide.dart';
 
 class ContactRowWidget extends StatelessWidget {
   const ContactRowWidget({
@@ -15,7 +15,7 @@ class ContactRowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () =>
-          BlocProvider.of<ContactsBloc>(context).dispatch(ClickedContactEvent(contact)),
+          Navigator.push(context,SlideLeftRoute(page: ConversationPageSlide(startContact: contact))),
       child: Container(
           color: Palette.primaryColor,
           child: Padding(

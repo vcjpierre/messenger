@@ -16,7 +16,7 @@ import 'package:flutter_messenger/blocs/authentication/Bloc.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
+  State<StatefulWidget> createState() {    
     return _RegisterPageState();
   }
 }
@@ -222,7 +222,8 @@ class _RegisterPageState extends State<RegisterPage>
           profileImage = Image.asset(Assets.user).image;
           if (state is PreFillData) {
             age = state.user.age != null ? state.user.age : 18;
-            profileImage = Image.network(state.user.photoUrl).image;
+            if(state.user.photoUrl!=null)
+              profileImage = Image.network(state.user.photoUrl).image;
           } else if (state is ReceivedProfilePicture) {
             profileImageFile = state.file;
             profileImage = Image.file(profileImageFile).image;
