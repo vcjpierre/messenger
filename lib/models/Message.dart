@@ -33,6 +33,26 @@ abstract class Message {
     return message;
   }
 
+  factory Message.fromMap(Map map) {
+    final int type = map['type'];
+    Message message;
+    switch (type) {
+      case 0:
+        message = TextMessage.fromMap(map);
+        break;
+      case 1:
+        message = ImageMessage.fromMap(map);
+        break;
+      case 2:
+        message = VideoMessage.fromMap(map);
+        break;
+      case 3:
+        message = FileMessage.fromMap(map);
+    }
+    message.isSelf = SharedObjects.prefs.getString(Constants.sessionUsername) ==
+        message.senderUsername;
+    return message;
+  }
   Map<String, dynamic> toMap();
 }
 
@@ -44,10 +64,12 @@ class TextMessage extends Message {
 
   factory TextMessage.fromFirestore(DocumentSnapshot doc) {
     Map data = doc.data;
+    return TextMessage.fromMap(data);
+  }
+  factory TextMessage.fromMap(Map data) {
     return TextMessage(data['text'], data['timeStamp'], data['senderName'],
         data['senderUsername']);
   }
-
   @override
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = Map();
@@ -58,6 +80,10 @@ class TextMessage extends Message {
     map['type'] = 0;
     return map;
   }
+
+  @override
+  String toString() => '{ senderName : $senderName, senderUsername : $senderUsername, isSelf : $isSelf , timeStamp : $timeStamp, type : 3, text: $text }';
+
 }
 
 class ImageMessage extends Message {
@@ -68,6 +94,9 @@ class ImageMessage extends Message {
 
   factory ImageMessage.fromFirestore(DocumentSnapshot doc) {
     Map data = doc.data;
+      return ImageMessage.fromMap(data);
+  }
+  factory ImageMessage.fromMap(Map data) {
     return ImageMessage(data['imageUrl'],data['fileName'], data['timeStamp'], data['senderName'],
         data['senderUsername']);
   }
@@ -84,6 +113,9 @@ class ImageMessage extends Message {
     print('map $map');
     return map;
   }
+  @override
+  String toString() => '{ senderName : $senderName, senderUsername : $senderUsername, isSelf : $isSelf , timeStamp : $timeStamp, type : 3, fileName: $fileName, imageUrl : $imageUrl  }';
+
 }
 
 class VideoMessage extends Message {
@@ -95,6 +127,9 @@ class VideoMessage extends Message {
 
   factory VideoMessage.fromFirestore(DocumentSnapshot doc) {
     Map data = doc.data;
+   return VideoMessage.fromMap(data);
+  }
+  factory VideoMessage.fromMap(Map data) {
     return VideoMessage(data['videoUrl'],data['fileName'], data['timeStamp'], data['senderName'],
         data['senderUsername']);
   }
@@ -110,6 +145,9 @@ class VideoMessage extends Message {
     map['type'] = 2;
     return map;
   }
+  @override
+  String toString() => '{ senderName : $senderName, senderUsername : $senderUsername, isSelf : $isSelf , timeStamp : $timeStamp, type : 3, fileName: $fileName, videoUrl : $videoUrl  }';
+
 }
 
 class FileMessage extends Message {
@@ -120,6 +158,9 @@ class FileMessage extends Message {
 
   factory FileMessage.fromFirestore(DocumentSnapshot doc) {
     Map data = doc.data;
+   return FileMessage.fromMap(data);
+  }
+  factory FileMessage.fromMap(Map data) {
     return FileMessage(data['fileUrl'],data['fileName'], data['timeStamp'], data['senderName'],
         data['senderUsername']);
   }
@@ -135,4 +176,7 @@ class FileMessage extends Message {
     map['type'] = 3;
     return map;
   }
+
+  @override
+  String toString() => '{ senderName : $senderName, senderUsername : $senderUsername, isSelf : $isSelf , timeStamp : $timeStamp, type : 3, fileName: $fileName, fileUrl : $fileUrl  }';
 }

@@ -5,8 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_messenger/blocs/attachments/AttachmentsBloc.dart';
 import 'package:flutter_messenger/blocs/chats/Bloc.dart';
 import 'package:flutter_messenger/blocs/contacts/Bloc.dart';
+import 'package:flutter_messenger/blocs/home/Bloc.dart';
 import 'package:flutter_messenger/config/Constants.dart';
-import 'package:flutter_messenger/pages/ContactListPage.dart';
+import 'package:flutter_messenger/pages/HomePage.dart';
 import 'package:flutter_messenger/repositories/AuthenticationRepository.dart';
 import 'package:flutter_messenger/repositories/ChatRepository.dart';
 import 'package:flutter_messenger/repositories/StorageRepository.dart';
@@ -26,7 +27,6 @@ void main() async {
   SharedObjects.prefs = await CachedSharedPreferences.getInstance();
   Constants.cacheDirPath = (await getTemporaryDirectory()).path;
   Constants.downloadsDirPath = (await DownloadsPathProvider.downloadsDirectory).path;
-
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider<AuthenticationBloc>(
@@ -49,6 +49,9 @@ void main() async {
       ),
       BlocProvider<AttachmentsBloc>(
         builder: (context) => AttachmentsBloc(chatRepository: chatRepository),
+      ),
+      BlocProvider<HomeBloc>(
+        builder: (context) => HomeBloc(chatRepository: chatRepository),
       )
     ],
     child: Messenger(),
@@ -68,9 +71,9 @@ class Messenger extends StatelessWidget {
           // return AttachmentPage();
           if (state is UnAuthenticated) {
             return RegisterPage();
-          } else if (state is ProfileUpdated) {
+          } else if (state is ProfileUpdated) {            
             BlocProvider.of<ChatBloc>(context).dispatch(FetchChatListEvent());
-            return ContactListPage();
+            return HomePage();
             //  return ConversationPageSlide();
           } else {
             return RegisterPage();

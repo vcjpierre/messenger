@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_messenger/providers/AuthenticationProvider.dart';
 import 'package:flutter_messenger/providers/BaseProviders.dart';
+import 'package:flutter_messenger/repositories/BaseRepository.dart';
 
-class AuthenticationRepository {
+class AuthenticationRepository extends BaseRepository {
 
   BaseAuthenticationProvider authenticationProvider = AuthenticationProvider();
 
@@ -15,4 +16,9 @@ class AuthenticationRepository {
       authenticationProvider.getCurrentUser();
 
   Future<bool> isLoggedIn() => authenticationProvider.isLoggedIn();
+
+  @override
+  void dispose() {
+    authenticationProvider.dispose();
+  }
 }

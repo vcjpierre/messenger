@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_messenger/config/Palette.dart';
 import 'package:flutter_messenger/config/Styles.dart';
-import 'package:flutter_messenger/widgets/ChatRowWidget.dart';
+import 'package:flutter_messenger/widgets/ConversationListWidget.dart';
 
 import 'package:flutter_messenger/widgets/NavigationPillWidget.dart';
 
@@ -14,6 +13,7 @@ class ConversationBottomSheet extends StatefulWidget {
 }
 
 class _ConversationBottomSheetState extends State<ConversationBottomSheet> {
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -33,25 +33,12 @@ class _ConversationBottomSheetState extends State<ConversationBottomSheet> {
                       ),
                     ]),
                 onVerticalDragEnd: (details) {
-                  print('Dragged Down');
                   if (details.primaryVelocity > 50) {
                     Navigator.pop(context);
                   }
                 },
               ),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: ClampingScrollPhysics(),
-                itemCount: 5,
-                separatorBuilder: (context, index) => Padding(
-                    padding: EdgeInsets.only(left: 75, right: 20),
-                    child: Divider(
-                      color: Palette.accentColor,
-                    )),
-                itemBuilder: (context, index) {
-                  return ChatRowWidget();
-                },
-              )
+              ConversationListWidget(),
             ])));
   }
 }
