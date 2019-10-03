@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_messenger/config/Assets.dart';
 import 'package:flutter_messenger/config/Palette.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_messenger/config/Styles.dart';
 import 'package:flutter_messenger/models/Message.dart';
 import 'package:flutter_messenger/utils/SharedObjects.dart';
 import 'package:flutter_messenger/widgets/BottomSheetFixed.dart';
@@ -21,7 +20,7 @@ class ChatItemWidget extends StatelessWidget {
     return Container(
         child: Column(children: <Widget>[
       buildMessageContainer(isSelf, message, context),
-      buildTimeStamp(isSelf, message)
+      buildTimeStamp(context,isSelf, message)
     ]));
   }
 
@@ -164,7 +163,7 @@ class ChatItemWidget extends StatelessWidget {
     }
   }
 
-  Row buildTimeStamp(bool isSelf, Message message) {
+  Row buildTimeStamp(BuildContext context, bool isSelf, Message message) {
     return Row(
         mainAxisAlignment:
             isSelf ? MainAxisAlignment.end : MainAxisAlignment.start,
@@ -173,7 +172,7 @@ class ChatItemWidget extends StatelessWidget {
             child: Text(
               DateFormat('dd MMM kk:mm').format(
                   DateTime.fromMillisecondsSinceEpoch(message.timeStamp)),
-              style: Styles.date,
+              style: Theme.of(context).textTheme.caption,
             ),
             margin: EdgeInsets.only(
                 left: isSelf ? 5.0 : 0.0,
