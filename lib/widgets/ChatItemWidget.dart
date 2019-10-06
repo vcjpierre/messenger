@@ -1,4 +1,5 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_messenger/config/Assets.dart';
 import 'package:flutter_messenger/config/Palette.dart';
@@ -6,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter_messenger/models/Message.dart';
 import 'package:flutter_messenger/utils/SharedObjects.dart';
 import 'package:flutter_messenger/widgets/BottomSheetFixed.dart';
+import 'package:flutter_messenger/widgets/ImageFullScreenWidget.dart';
 import 'VideoPlayerWidget.dart';
 
 class ChatItemWidget extends StatelessWidget {
@@ -14,7 +16,7 @@ class ChatItemWidget extends StatelessWidget {
   const ChatItemWidget(this.message);
 
   @override
-  Widget build(BuildContext context) {    
+  Widget build(BuildContext context) {   
     //This is the sent message. We'll later use data from firebase instead of index to determine the message is sent or received.
     final isSelf = message.isSelf;
     return Container(
@@ -62,9 +64,15 @@ class ChatItemWidget extends StatelessWidget {
                 isSelf ? Palette.selfMessageColor : Palette.otherMessageColor),
       );
     } else if (message is ImageMessage) {
-      return ClipRRect(
-          borderRadius: BorderRadius.circular(8.0),
-          child: FadeInImage(placeholder: AssetImage(Assets.placeholder), image: NetworkImage(message.imageUrl)));
+      return GestureDetector(
+        onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (_) => ImageFullScreen('ImageMessage_${message.documentId}',message.imageUrl))),
+        child: Hero(
+          tag: 'ImageMessage_${message.documentId}',
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: CachedNetworkImage(imageUrl:message.imageUrl, placeholder: (_,url)=>Image.asset(Assets.placeholder))),
+        ),
+      );
     } else if (message is VideoMessage) {
       return ClipRRect(
         borderRadius: BorderRadius.circular(8.0),

@@ -91,7 +91,7 @@ class _RegisterPageState extends State<RegisterPage>
         end = Alignment(1 - pageController.page, 1 - pageController.page);
       });
     });
-    
+
     authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
     authenticationBloc.state.listen((state) {
       if (state is Authenticated) {
