@@ -19,7 +19,6 @@ dependencies:
   flutter:
     sdk: flutter
   intl: ^0.15.8
-  rubber: ^0.3.2
   cupertino_icons: ^0.1.2
   infinite_listview: ^1.0.0
   firebase_auth: ^0.14.0+4 #to auth with firebase
