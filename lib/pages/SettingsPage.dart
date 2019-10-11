@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_messenger/blocs/authentication/Bloc.dart';
 import 'package:flutter_messenger/blocs/config/Bloc.dart';
 import 'package:flutter_messenger/config/Assets.dart';
 import 'package:flutter_messenger/config/Constants.dart';
@@ -294,7 +295,8 @@ class _SettingsPageState extends State<SettingsPage> {
                         'SIGN OUT',
                         style: Theme.of(context).textTheme.button,
                       ),
-                      onPressed: () {                        
+                      onPressed: ()  => {BlocProvider.of<AuthenticationBloc>(context).dispatch(ClickedLogout()),
+                      configBloc.dispatch(RestartApp())
                       },
                       shape: RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(30.0))),

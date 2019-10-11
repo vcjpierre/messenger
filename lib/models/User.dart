@@ -32,5 +32,5 @@ class User{
   String toString() {
    return '{ documentId: $documentId, name: $name, age: $age, username: $username, photoUrl: $photoUrl }';
   }
-
+  
 }

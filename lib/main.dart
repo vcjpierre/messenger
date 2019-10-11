@@ -63,9 +63,14 @@ void main() async {
 }
 
 // ignore: must_be_immutable
-class Messenger extends StatelessWidget {
-  ThemeData theme;
+class Messenger extends StatefulWidget {
+  @override
+  _MessengerState createState() => _MessengerState();
+}
 
+class _MessengerState extends State<Messenger> {
+  ThemeData theme;
+  Key key = UniqueKey();
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ConfigBloc, ConfigState>(builder: (context, state) {
@@ -74,23 +79,25 @@ class Messenger extends StatelessWidget {
             ? Themes.dark
             : Themes.light;
       }
+      if(state is RestartedAppState){
+        key = UniqueKey();
+      }
       if (state is ConfigChangeState && state.key == Constants.configDarkMode) {
         theme = state.value ? Themes.dark : Themes.light;
       }
       return MaterialApp(
         title: 'Messenger',
         theme: theme,
+        key: key,
         debugShowCheckedModeBanner: false,
         home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
           builder: (context, state) {
-            // return AttachmentPage();
             if (state is UnAuthenticated) {
               return RegisterPage();
             } else if (state is ProfileUpdated) {
               if(SharedObjects.prefs.getBool(Constants.configMessagePaging))
                 BlocProvider.of<ChatBloc>(context).dispatch(FetchChatListEvent());
               return HomePage();
-              //  return ConversationPageSlide();
             } else {
               return RegisterPage();
             }
