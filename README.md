@@ -48,7 +48,7 @@ npm install -g firebase-tools
 ```
 firebase login
 ```
-Create a new directory with the name **server**, inside your app directory. And run `firebase init` inside it. Choose **Firestore** and **Functions** when prompted for choices (We’ll need Cloud functions later).
+Go to the **server** directory. And run `firebase init` inside it. Choose **Firestore** and **Functions** when prompted for choices (We’ll need Cloud functions later).
 
 - Deploying the Rules
 ```
