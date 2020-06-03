@@ -1,4 +1,4 @@
-<h1 align="center">Flutter Messenger 🤳</h1>
+<h1 align="center"> Messenger App 🤳</h1>
 <p align="center">A messenger app built using flutter</p>
 
 <p align="center">
