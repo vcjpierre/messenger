@@ -127,11 +127,11 @@ class _ChatAppBarState extends State<ChatAppBar> {
                                               Text(_name,
                                                   style: Theme.of(context)
                                                       .textTheme
-                                                      .title),
+                                                      .headline6),
                                               Text("@" + _username,
                                                   style: Theme.of(context)
                                                       .textTheme
-                                                      .subtitle)
+                                                      .subtitle2)
                                             ],
                                           );
                                         }))),

@@ -74,7 +74,7 @@ class _AttachmentPageState extends State<AttachmentPage>
                   centerTitle: true,
                   flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
-                    title: Text("Attachments", style: Theme.of(context).textTheme.title),
+                    title: Text("Attachments", style: Theme.of(context).textTheme.headline6),
                   ),
                 ),
               SliverToBoxAdapter(child:
@@ -121,7 +121,7 @@ class _AttachmentPageState extends State<AttachmentPage>
         return Center(
             child: Text(
           'No Photos',
-          style: Theme.of(context).textTheme.body2,
+          style: Theme.of(context).textTheme.bodyText2,
         ));
       }
       return GridView.count( //otherwise show a grid of photos
@@ -148,7 +148,7 @@ class _AttachmentPageState extends State<AttachmentPage>
         return Center(
             child: Text(
           'No Videos',
-              style: Theme.of(context).textTheme.body2,
+              style: Theme.of(context).textTheme.bodyText2,
         ));
       }
       return GridView.count( //else show a grid of videos using their thumbnails
@@ -179,7 +179,7 @@ class _AttachmentPageState extends State<AttachmentPage>
         return Center(
             child: Text(
           'No Files',
-              style: Theme.of(context).textTheme.body2,
+              style: Theme.of(context).textTheme.bodyText2,
         ));
       }
       return ListView.separated( // show the list of files
@@ -229,7 +229,7 @@ class _AttachmentPageState extends State<AttachmentPage>
                     children: <Widget>[
                       Text(
                         fileMessage.fileName,
-                        style: Theme.of(context).textTheme.subtitle,
+                        style: Theme.of(context).textTheme.caption,
                       ),
                       SizedBox(
                         height: 8,

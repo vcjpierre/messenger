@@ -178,7 +178,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                     Text(
                                       'Image Compression',
                                       style:
-                                          Theme.of(context).textTheme.subhead,
+                                          Theme.of(context).textTheme.subtitle1,
                                     ),
                                   ],
                                 ),
@@ -207,7 +207,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                     Text(
                                       'Messages Peek',
                                       style:
-                                          Theme.of(context).textTheme.subhead,
+                                          Theme.of(context).textTheme.subtitle1,
                                     )
                                   ],
                                 ),
@@ -235,7 +235,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                     Text(
                                       'Message Paging',
                                       style:
-                                          Theme.of(context).textTheme.subhead,
+                                          Theme.of(context).textTheme.subtitle1,
                                     )
                                   ],
                                 ),
@@ -264,7 +264,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                       Text(
                                         'Dark Mode',
                                         style:
-                                            Theme.of(context).textTheme.subhead,
+                                            Theme.of(context).textTheme.subtitle1,
                                       )
                                     ]),
                                 Switch(

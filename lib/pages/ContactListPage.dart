@@ -77,7 +77,7 @@ class _ContactListPageState extends State<ContactListPage>
                           centerTitle: true,
                           flexibleSpace: FlexibleSpaceBar(
                             centerTitle: true,
-                            title: Text("Contacts", style: Theme.of(context).textTheme.title),
+                            title: Text("Contacts", style: Theme.of(context).textTheme.headline6),
                           ),
                         ),
                         BlocBuilder<ContactsBloc, ContactsState>(
@@ -161,7 +161,7 @@ class _ContactListPageState extends State<ContactListPage>
                             margin: EdgeInsets.only(top: 40),
                             child: Text(
                               'Add by Username',
-                              style: Theme.of(context).textTheme.title,
+                              style: Theme.of(context).textTheme.headline6,
                             ),
                           ),
                           Container(
@@ -169,7 +169,7 @@ class _ContactListPageState extends State<ContactListPage>
                             child: TextField(
                               controller: usernameController,
                               textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.subhead,
+                              style: Theme.of(context).textTheme.subtitle1,
                               decoration: Decorations.getInputDecoration(
                                   hint: '@username', context: parentContext),
                             ),
