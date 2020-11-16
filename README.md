@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-    <a href="https://travis-ci.com/vcjpierre/flutter-messenger"><img src="https://travis-ci.com/vcjpierre/flutter-messenger.svg?token=yECM8TuNxt87DoJ5PM49&branch=master" alt="Build"></a>
+    <a href="https://travis-ci.com/vcjpierre/messenger"><img src="https://travis-ci.com/vcjpierre/messenger.svg?token=yECM8TuNxt87DoJ5PM49&branch=master" alt="Build"></a>
     <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
     <a href="https://github.com/vcjpierre/flutter-messenger/graphs/commit-activity"><img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" alt="Maintenance"></a>
     <a href="#"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a>
