@@ -3,10 +3,10 @@
   "scripts": {
     "lint": "tslint --project tsconfig.json",
     "build": "tsc",
-    "serve": "npm run build && firebase serve --only functions",
+    "serve": "firebase serve --only firestore:rules",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
+    "deploy": "firebase deploy — only firestore:rules",
     "logs": "firebase functions:log"
   },
   "engines": {
@@ -14,7 +14,7 @@
   },
   "main": "lib/index.js",
   "dependencies": {
-    "firebase-admin": "^8.0.0",
+    "firebase-admin": "^9.5.0",
     "firebase-functions": "^3.1.0"
   },
   "devDependencies": {
